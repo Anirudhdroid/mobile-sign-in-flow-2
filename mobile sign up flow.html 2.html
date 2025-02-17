@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step-by-Step Mobile Signup</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #E6EAF8;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 380px;
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        h2 {
+            color: #6D5DC6;
+            margin-bottom: 10px;
+        }
+        
+        .social-login {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .social-login button {
+            border: none;
+            background: #F2F3FB;
+            padding: 10px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        button.primary {
+            width: 100%;
+            padding: 12px;
+            background: #6D5DC6;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        
+        .toggle a {
+            color: #6D5DC6;
+            cursor: pointer;
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Welcome Screen -->
+        <div id="welcomeScreen">
+            <h2>Welcome to g-hub</h2>
+            <p>Please login or sign up to continue using our app.</p>
+            <button class="primary" onclick="nextStep(1)">Sign up</button>
+            <p class="toggle">You already have an account? <a onclick="nextStep(4)">Login</a></p>
+        </div>
+
+        <!-- Sign Up Screen -->
+        <div id="signupScreen" class="hidden">
+            <h2>Sign Up</h2>
+            <p>Enter via Social Networks</p>
+            <div class="social-login">
+                <button>googleblob:https://manage.wix.com/e3110980-477f-48a1-acc9-5d87b7bd7634</button>
+                <button>🔷</button>
+            </div>
+            <p>or sign up with email</p>
+            <input type="email" placeholder="jhon.doe@gmail.com" id="email">
+            <button class="primary" onclick="nextStep(2)">Next</button>
+        </div>
+
+        <!-- OTP Verification Screen -->
+        <div id="otpScreen" class="hidden">
+            <h2>Verify OTP</h2>
+            <p>Enter the OTP sent to your email.</p>
+            <input type="text" placeholder="Enter OTP" id="otp">
+            <button class="primary" onclick="nextStep(3)">Verify</button>
+        </div>
+
+        <!-- Create Password Screen -->
+        <div id="passwordScreen" class="hidden">
+            <h2>Create Password</h2>
+            <input type="password" placeholder="Enter Password" id="password">
+            <button class="primary" onclick="nextStep(4)">Sign Up</button>
+        </div>
+
+        <!-- Login Screen -->
+        <div id="loginScreen" class="hidden">
+            <h2>Login Now</h2>
+            <p>Enter via Social Networks</p>
+            <div class="social-login">
+                <button>🔵</button>
+                <button>🔷</button>
+            </div>
+            <p>or login with email</p>
+            <input type="email" placeholder="jhon.doe@gmail.com">
+            <input type="password" placeholder="Password">
+            <button class="primary">Login</button>
+            <p class="toggle">Don't have an account? <a onclick="nextStep(1)">Sign up</a></p>
+        </div>
+    </div>
+
+    <script>
+        function nextStep(step) {
+            document.getElementById('welcomeScreen').classList.add('hidden');
+            document.getElementById('signupScreen').classList.add('hidden');
+            document.getElementById('otpScreen').classList.add('hidden');
+            document.getElementById('passwordScreen').classList.add('hidden');
+            document.getElementById('loginScreen').classList.add('hidden');
+
+            if (step === 1) {
+                document.getElementById('signupScreen').classList.remove('hidden');
+            } else if (step === 2) {
+                document.getElementById('otpScreen').classList.remove('hidden');
+            } else if (step === 3) {
+                document.getElementById('passwordScreen').classList.remove('hidden');
+            } else if (step === 4) {
+                document.getElementById('loginScreen').classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+
+</html>
